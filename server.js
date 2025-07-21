@@ -16,7 +16,14 @@ mongoose.connect(mongoURI, {
 .then(() => console.log('✅ MongoDB Connected'))
 .catch((err) => console.error('❌ MongoDB Connection Error:', err));
 
-app.use(cors({ origin: 'https://invoice-frontend-coral.vercel.app', methods: ['GET', 'POST'], allowedHeaders: ['Content-Type'] }));
+const cors = require('cors');
+
+app.use(cors({
+  origin: ['https://invoice-frontend-coral.vercel.app', 'http://localhost:5173'],
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+}));
+
 app.use(express.json());
 app.use('/api/sales-invoice', salesInvoiceRoutes);
 
