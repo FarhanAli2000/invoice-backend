@@ -18,11 +18,7 @@ mongoose.connect(mongoURI, {
 
 const cors = require('cors');
 
-app.use(cors({
-  origin: ['https://invoice-frontend-coral.vercel.app', 'http://localhost:5173'],
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type']
-}));
+app.use(cors({ origin: 'https://invoice-frontend-coral.vercel.app', methods: ['GET', 'POST'], allowedHeaders: ['Content-Type'] })); also allow local host 5173 to connect 
 
 app.use(express.json());
 app.use('/api/sales-invoice', salesInvoiceRoutes);
